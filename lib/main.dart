@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       home: Material(
         child: Center(
           child: Container(
-            child: Text("My First Android Application"),
+            child: Text("My First Android Application Using Flutter"),
           ),
         ),
       ),

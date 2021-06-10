@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   final int days = 30;
-  final String name = "codpur";
+  final String name = "Preeti";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          child: Text("My First Android Application Using Flutter"),
+          child: Text("My First Android Application $name"),
         ),
       ),
       drawer: Drawer(),

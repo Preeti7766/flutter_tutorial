@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
           child: Text("My First Android Application $days $name"),
         ),
       ),
-      drawer: Drawer(),
+      // drawer: Drawer(),
     );
   }
 }

@@ -13,6 +13,11 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
 
+  clearTextInput() {
+    username.clear();
+    password.clear();
+  }
+
   final _formKey = GlobalKey<FormState>();
 
   void moveToHome(BuildContext context) async {
@@ -22,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
       });
       await Future.delayed(Duration(seconds: 1));
       await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      await clearTextInput();
       setState(() {
         changeButton = false;
       });
@@ -104,7 +110,6 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                         height: 40,
                       ),
-
                       Material(
                         color: Colors.deepPurple,
                         borderRadius:
@@ -133,17 +138,9 @@ class _LoginPageState extends State<LoginPage> {
                                 shape: changeButton
                                     ? BoxShape.circle
                                     : BoxShape.rectangle),
-                            // borderRadius: BorderRadius.circular(changeButton ? 20 : 8)),
                           ),
                         ),
-                      )
-                      // ElevatedButton(
-                      //   child: Text("login"),
-                      //   style: TextButton.styleFrom(minimumSize: Size(100, 40)),
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, MyRoutes.homeRoute);
-                      //   },
-                      // )
+                      ),
                     ],
                   ),
                 ),

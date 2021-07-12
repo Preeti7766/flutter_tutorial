@@ -1,11 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:first_app/models/catalog.dart';
 import 'package:first_app/widgets/drawer.dart';
 import 'package:first_app/widgets/item_widget.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -36,44 +35,26 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Catlog App"),
+      body: SafeArea(
+        child: Container(
+          child: CatalogHeader(),
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        // ignore: unnecessary_null_comparison
-        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-            ? GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                ),
-                itemBuilder: (context, index) {
-                  final item = CatalogModel.items[index];
-                  return Card(
-                      clipBehavior: Clip.antiAlias,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      child: GridTile(
-                        header: Container(
-                          child: Text(item.name),
-                          padding: EdgeInsets.all(12),
-                          decoration: BoxDecoration(color: Colors.deepPurple),
-                        ),
-                        child: Image.network(item.image),
-                        footer: Text(
-                          item.price.toString(),
-                        ),
-                      ));
-                },
-                itemCount: CatalogModel.items.length,
-              )
-            : Center(
-                child: CircularProgressIndicator(),
-              ),
-      ),
-      drawer: MyDrawer(),
+    );
+  }
+}
+
+class CatalogHeader extends StatelessWidget {
+  const CatalogHeader({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        "Catalog App".text.make(),
+        "Trending Products".text.make(),
+      ],
     );
   }
 }
